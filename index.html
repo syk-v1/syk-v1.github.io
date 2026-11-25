@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Martin Ejionye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, precise, a little nocturnal — a student engineer's portfolio
+   IDEA: a terminal left running overnight; the site is what's printed beneath the scene
+   PICTURE: live ASCII winter night (castle, moon, snow, campfire) as the full-bleed hero
+   COLOUR and TYPE: night ink, snow white, one ember accent; Plex Mono titles, Plex Sans body
+   LAYOUT: hero scene → about → projects grid → experience → skills/education → contact */
+:root{color-scheme:dark;--bg:#06080d;--bg2:#0b0f17;--line:#1a2130;--ink:#e8ebf1;--mute:#97a0b2;--ember:#ff8a3d;--snow:#dfe6f0}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(5vw,16px);background:rgba(6,8,13,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .brand{font:600 15px "IBM Plex Mono",monospace;text-decoration:none;letter-spacing:-.01em}
+nav .brand span{color:var(--ember)}
+nav .links{display:flex;gap:4px;flex-wrap:wrap}
+nav .links a{font-size:14px;color:var(--mute);text-decoration:none;padding:10px 10px;border-radius:6px}
+nav .links a:hover,nav .links a:focus-visible{color:var(--ink);background:var(--bg2);outline:none}
+.hero{position:relative;height:clamp(480px,82vh,780px);background:#05070d;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .copy{position:absolute;left:max(5vw,16px);top:clamp(28px,7vh,72px);max-width:560px;padding:22px 24px 24px;background:rgba(5,7,13,.72);border:1px solid var(--line);border-radius:10px}
+.hero h1{font:600 clamp(30px,5vw,50px)/1.05 "IBM Plex Mono",monospace;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.hero .role{margin:12px 0 0;color:var(--snow);font-size:17px}
+.hero .sub{margin:6px 0 0;color:var(--mute);font-size:15px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:8px;font:500 15px "IBM Plex Sans",sans-serif;text-decoration:none;border:1px solid var(--line);background:var(--bg2);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--ember);border-color:var(--ember);color:#1a0d04}
+.btn:hover{filter:brightness(1.12)}.btn:focus-visible{outline:2px solid var(--snow);outline-offset:2px}
+.status{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:6px max(5vw,16px);font:12px "IBM Plex Mono",monospace;color:#7d879a;background:rgba(5,7,13,.8);border-top:1px solid var(--line)}
+.status #st{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.status .ctrls{display:flex;gap:6px;flex:none}
+.status button{font:12px "IBM Plex Mono",monospace;color:var(--mute);background:transparent;border:1px solid var(--line);border-radius:5px;padding:6px 9px;cursor:pointer;min-height:32px}
+.status button:hover{color:var(--ink)}
+.band{padding:clamp(48px,7vw,96px) max(5vw,16px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1120px;margin:0 auto}
+h2{font:600 clamp(26px,3.4vw,34px)/1.1 "IBM Plex Mono",monospace;margin:0 0 28px;letter-spacing:-.02em}
+h2 .p{color:var(--ember)}
+h3{font:600 18px/1.3 "IBM Plex Sans",sans-serif;margin:0}
+.about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.about p{margin:0 0 16px;max-width:64ch;color:#cdd3de;font-size:17px}
+.facts{border:1px solid var(--line);border-radius:10px;background:var(--bg2)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:13px 18px;border-bottom:1px solid var(--line);font-size:15px}
+.facts div:last-child{border:0}
+.facts dt,.facts span:first-child{color:var(--mute)}
+.facts span:last-child{text-align:right}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:16px}
+.card{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid var(--line);border-radius:10px;background:var(--bg2);transition:border-color .2s}
+.card:hover{border-color:#2c3850}
+.card .kind{font:500 13px "IBM Plex Mono",monospace;color:var(--ember)}
+.card p{margin:0;color:var(--mute);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tags span{font:12px "IBM Plex Mono",monospace;color:#b8c0cf;border:1px solid var(--line);border-radius:4px;padding:3px 8px}
+.stat{font:600 22px "IBM Plex Mono",monospace;color:var(--snow)}
+.tl{display:grid;gap:0}
+.tl .row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.tl .row:last-child{border-bottom:1px solid var(--line)}
+.tl .when{font:14px "IBM Plex Mono",monospace;color:var(--mute);white-space:nowrap}
+.tl p{margin:6px 0 0;color:#c3cad6;font-size:15px;max-width:70ch}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,5vw,64px)}
+.skill{padding:14px 0;border-top:1px solid var(--line)}
+.skill b{display:block;font:500 14px "IBM Plex Mono",monospace;color:var(--mute);margin-bottom:4px}
+.contact{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.contact p{margin:0;color:var(--mute);max-width:52ch;font-size:17px}
+footer{padding:28px max(5vw,16px);color:#6b7487;font:13px "IBM Plex Mono",monospace;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){.about,.two{grid-template-columns:minmax(0,1fr)}.tl .row{grid-template-columns:minmax(0,1fr);gap:4px}}
+@media(max-width:600px){nav .links a:not(.gh){display:none}.hero{height:620px}.hero .copy{right:16px;top:18px;padding:18px}.hero .role{font-size:15px}.status #st{font-size:11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="#top">martin<span>.</span>ejionye</a>
+  <div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="gh" href="https://github.com/syk-v1">GitHub ↗</a></div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="cv" aria-label="Animated ASCII art of a castle on a snowy winter night with a campfire" role="img"></canvas>
+  <div class="copy">
+    <h1>Ndubuisi Martin Ejionye</h1>
+    <p class="role">Computer Science and Mathematics, Lancaster University</p>
+    <p class="sub">I build games, trading tools and data projects, and I'm working towards quantitative research.</p>
+    <div class="cta"><a class="btn primary" href="#projects">See my work</a><a class="btn" href="https://github.com/syk-v1">GitHub</a></div>
+  </div>
+  <div class="status">
+    <span id="st">winter night</span>
+    <span class="ctrls"><button id="bWind" aria-label="Change wind">wind</button><button id="bFire" aria-label="Stoke the fire">stoke</button><button id="bPause" aria-label="Pause animation">pause</button></span>
+  </div>
+</header>
+
+<section class="band" id="about"><div class="wrap">
+  <h2><span class="p">~/</span>about</h2>
+  <div class="about">
+    <div>
+      <p>I'm a second-year Computer Science and Mathematics student at Lancaster University. I like problems where maths and code meet: probability and linear algebra on one side, systems that actually run on the other.</p>
+      <p>Outside lectures I take part in algorithmic trading competitions, build small games, and make tools that I use every day. I'm currently preparing for quantitative research internships for summer 2027.</p>
+    </div>
+    <dl class="facts" style="margin:0">
+      <div><span>Studying</span><span>BSc CS and Mathematics</span></div>
+      <div><span>University</span><span>Lancaster</span></div>
+      <div><span>Graduating</span><span>2028</span></div>
+      <div><span>Based in</span><span>England</span></div>
+      <div><span>Interests</span><span>Quant, algorithms, games</span></div>
+    </dl>
+  </div>
+</div></section>
+
+<section class="band" id="projects"><div class="wrap">
+  <h2><span class="p">~/</span>projects</h2>
+  <div class="grid">
+    <article class="card">
+      <span class="kind">Competition</span>
+      <h3>IMC Prosperity 4</h3>
+      <p>Algorithmic trading challenge with 18,803 teams. Competed as team VOID_GEMS, writing Python trading strategies and taking on manual trading rounds.</p>
+      <span class="stat">253rd <small style="font-size:14px;color:var(--mute);font-weight:400">of 18,803 · Round 1 manual (top 1.3%)</small></span>
+      <div class="tags"><span>Python</span><span>Market making</span><span>Trading</span></div>
+    </article>
+    <article class="card">
+      <span class="kind">Game · Hackathon</span>
+      <h3>Gridtown</h3>
+      <p>An interactive game that runs inside Reddit, built on Reddit's developer platform. Submitted to Reddit's Game of the Day hackathon on Devpost.</p>
+      <div class="tags"><span>Reddit Devvit</span><span>TypeScript</span><span>Game design</span></div>
+    </article>
+    <article class="card">
+      <span class="kind">Research</span>
+      <h3>Posts vs markets</h3>
+      <p>Tests whether presidential posts about Iran move defence stocks. I tag each post as escalating or de-escalating, then measure how the ITA defence ETF moves against SPY in the 30 minutes after it.</p>
+      <div class="tags"><span>Python</span><span>Event study</span><span>NLP</span></div>
+    </article>
+    <article class="card">
+      <span class="kind">Tool</span>
+      <h3>LeetCode spaced-repetition tracker</h3>
+      <p>Schedules reviews of a curated set of 49 high-yield problems using the FSRS memory model, so I revisit each pattern just before I'd forget it.</p>
+      <div class="tags"><span>FSRS</span><span>Algorithms</span><span>Web</span></div>
+    </article>
+    <article class="card">
+      <span class="kind">Tool</span>
+      <h3>Hackathon Radar</h3>
+      <p>A live tracker of open hackathons and coding and trading challenges from reputable companies, so I stop missing deadlines.</p>
+      <div class="tags"><span>Web</span><span>Automation</span></div>
+    </article>
+    <article class="card">
+      <span class="kind">Game</span>
+      <h3>Snowman sliding puzzle</h3>
+      <p>A tile-sliding puzzle game in Java, built for my first-year object-oriented programming module.</p>
+      <div class="tags"><span>Java</span><span>OOP</span></div>
+    </article>
+  </div>
+</div></section>
+
+<section class="band" id="experience"><div class="wrap">
+  <h2><span class="p">~/</span>experience</h2>
+  <div class="tl">
+    <div class="row"><span class="when">Oct 2026 – now</span><div><h3>Student Representative</h3><p>School of Mathematical Sciences, Lancaster University. I gather feedback from students and raise it with staff.</p></div></div>
+    <div class="row"><span class="when">Ongoing</span><div><h3>Student Mentor, Generating Genius</h3><p>I help Year 11 students work out a career direction, turn it into a plan, and give feedback on their workshop tasks.</p></div></div>
+    <div class="row"><span class="when">Within last 2 years</span><div><h3>Volunteer organiser, local town council</h3><p>Helped run a foodbank and organise inclusivity events. I summarised residents' concerns for councillors, which led to a panel being set up to address them.</p></div></div>
+    <div class="row"><span class="when">Ongoing</span><div><h3>Lancaster maths society</h3><p>Help out at society events and fairs.</p></div></div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap two">
+  <div>
+    <h2><span class="p">~/</span>skills</h2>
+    <div class="skill"><b>Languages</b>Python, Java, C, C++</div>
+    <div class="skill"><b>Computer science</b>Data structures, algorithm complexity, object-oriented design</div>
+    <div class="skill"><b>Mathematics</b>Linear algebra, probability and statistics, real analysis, discrete maths, vector calculus</div>
+    <div class="skill"><b>Tools</b>Git, VS Code, Obsidian</div>
+  </div>
+  <div>
+    <h2><span class="p">~/</span>education</h2>
+    <div class="skill"><b>2025 – 2028 (expected)</b>BSc Computer Science and Mathematics, Lancaster University</div>
+    <div class="skill"><b>Current modules</b>Linear Algebra II, Probability II</div>
+  </div>
+</div></section>
+
+<section class="band" id="contact"><div class="wrap contact">
+  <div><h2 style="margin-bottom:12px"><span class="p">~/</span>contact</h2><p>Open to internships, hackathon teams and interesting projects. The quickest way to reach me is through GitHub.</p></div>
+  <a class="btn primary" href="https://github.com/syk-v1">github.com/syk-v1 ↗</a>
+</div></section>
+
+<footer><span>© 2026 Martin Ejionye</span><span>scene rendered live in ASCII</span></footer>
+
+<script>
+{
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),st=document.getElementById('st');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let fs,W,H,cols,rows,cw,chh,gy,G,C,stars=[],flakes=[],embers=[],heat,Fw,Fh,fx0,fb,cx,t=0,acc=0,inten=1,wind=1.2,paused=reduce,fc=0,ft=0;
+const MH=x=>rows*0.42+4*Math.sin(x*0.13)+3*Math.sin(x*0.31+1)+2.5*Math.sin(x*0.07+2);
+const hash=(x,y)=>{const h=Math.sin(x*127.1+y*311.7)*43758.5;return h-Math.floor(h)};
+const mkFlake=top=>({x:Math.random()*cols,y:top?-Math.random()*rows*0.3:Math.random()*rows,vy:2+Math.random()*4,s:Math.random()});
+function size(){
+  const d=devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;if(!W||!H)return;
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);
+  fs=W<600?9:W<1100?11:12;ctx.font=fs+'px "IBM Plex Mono",ui-monospace,Menlo,monospace';ctx.textBaseline='top';
+  cw=ctx.measureText('M').width;chh=fs*1.2;cols=Math.floor(W/cw);rows=Math.floor(H/chh);
+  gy=Math.floor(rows*0.7);G=new Array(cols*rows);C=new Array(cols*rows);
+  cx=W<760?Math.floor(cols/2):Math.floor(cols*0.66);
+  stars=[];for(let i=0;i<cols*rows*0.035;i++){const x=Math.floor(Math.random()*cols),y=Math.floor(Math.random()*gy);if(y<MH(x)-1)stars.push({x,y,ph:Math.random()*6.28,sp:1+Math.random()*3})}
+  const n=Math.round(cols*rows*0.035);flakes=[];for(let i=0;i<n;i++)flakes.push(mkFlake(false));
+  Fw=Math.max(10,Math.min(20,Math.floor(cols*0.12)));Fh=Math.floor(rows*0.28);fx0=Math.floor(cx-Fw/2);fb=rows-5;heat=new Float32Array(Fw*Fh);
+  for(let i=0;i<40;i++)stepFire();draw(0);
+}
+function put(x,y,c,col){x=Math.round(x);y=Math.round(y);if(x<0||y<0||x>=cols||y>=rows)return;const i=y*cols+x;G[i]=c;C[i]=col}
+function stepFire(){
+  const cen=(Fw-1)/2,lean=wind>0.8?1:wind<-0.8?-1:0,dec=1/Fh/Math.pow(inten,0.6);
+  for(let x=0;x<Fw;x++){const d=Math.abs(x-cen)/(Fw/2),prof=Math.max(0,1-d**1.8),gate=0.45+1.1*(0.5+0.5*Math.sin(t*4+x*0.8+Math.sin(t*1.7+x)));heat[(Fh-1)*Fw+x]=Math.min(1.5,prof*inten*gate*(0.8+0.4*Math.random()))}
+  for(let y=0;y<Fh-1;y++){const row=y*Fw,below=(y+1)*Fw;for(let x=0;x<Fw;x++){const r=Math.random();let sx=x+(r<0.28?-1:r>0.72?1:0);if(lean&&Math.random()<0.35)sx+=lean;sx=sx<0?0:sx>=Fw?Fw-1:sx;const v=heat[below+sx]-dec*(0.45+Math.random())-0.02*Math.abs(x-cen)/Fw;heat[row+x]=v>0?v:0}}
+  if(Math.random()<0.5*inten)embers.push({x:fx0+Fw/2+(Math.random()-0.5)*Fw*0.5,y:fb-Fh*0.6,vy:-(3+Math.random()*4),l:1});
+  inten+=(1-inten)*0.04;
+}
+const FC=' .:-=+*xX#%@';
+const fireCol=v=>v<0.3?'#7a1a0a':v<0.6?'#d8401a':v<0.9?'#f08a24':v<1.2?'#ffc83d':'#fff3b0';
+function draw(dt){
+  G.fill(' ');
+  for(const s of stars){const b=0.5+0.5*Math.sin(t*s.sp+s.ph);put(s.x,s.y,b>0.85?'*':b>0.45?'+':'.','rgba(235,235,215,'+(0.25+0.6*b).toFixed(2)+')')}
+  const mx=W<760?Math.floor(cols*0.82):Math.floor(cols*0.88),my=Math.floor(rows*0.13),r=W<600?3:4;
+  for(let dy=-r;dy<=r;dy++)for(let dx=-2*r;dx<=2*r;dx++)if((dx/2)**2+dy*dy<=r*r+0.5){const cr=hash(dx,dy)>0.8;put(mx+dx,my+dy,cr?'o':'@',cr?'#b9b39a':'#ece6c8')}
+  for(let x=0;x<cols;x++){const m=Math.floor(MH(x)),m2=Math.floor(MH(x+1));for(let y=m;y<gy;y++){let c,col;if(y===m){c=m2<m?'/':m2>m?'\\':'^';col='#dfe6f0'}else if(y<m+2){c=hash(x,y)>0.5?'^':'.';col='#9aa6b8'}else{c=hash(x,y)>0.55?'#':':';col='#2c374a'}put(x,y,c,col)}}
+  const cwid=W<600?8:11,ch=W<600?6:8;
+  for(let y=gy-ch;y<gy;y++)for(let x=cx-cwid;x<=cx+cwid;x++){let c=y===gy-ch?(x%2?'_':'|'):'#',col='#55607a';if(y===gy-ch+2&&(x-cx)%4===0&&Math.abs(x-cx)<cwid){c='o';col=Math.sin(t*3+x)>-0.6?'#ffc83d':'#8a6a20'}if(y>=gy-2&&Math.abs(x-cx)<=1)c=' ';put(x,y,c,col)}
+  for(const tx of[cx-cwid-1,cx+cwid+1]){const top=gy-ch-3;for(let y=top;y<gy;y++)for(let x=tx-1;x<=tx+1;x++){const w=y===top+2&&x===tx;put(x,y,w?'o':'#',w?'#ffc83d':'#4a546b')}put(tx-1,top-1,'/','#7d8aa3');put(tx,top-1,'^','#dfe6f0');put(tx+1,top-1,'\\','#7d8aa3')}
+  const fcx=fx0+Fw/2;
+  for(let y=gy;y<rows;y++)for(let x=0;x<cols;x++){const h=hash(x,y),d=Math.hypot((x-fcx)/2,y-fb);const c=h>0.8?'_':h>0.6?'.':h>0.45?',':h>0.3?'-':' ';put(x,y,c,d<5?'#f0b060':d<9?'#b88a5a':d<14?'#8f8478':'#5f6a7c')}
+  for(let y=gy-4;y<gy+2;y++)for(let x=0;x<cols;x++){const n=Math.sin(x*0.22+t*0.7+y)+Math.sin(x*0.09-t*0.35+y*2);if(n>1.05)put(x,y,n>1.5?'~':'-','#3c4658')}
+  for(let x=-1;x<=Fw;x++)put(fx0+x,fb+1,x%3===0?'\\':x%3===1?'=':'/','#8a5a30');
+  for(let y=0;y<Fh;y++)for(let x=0;x<Fw;x++){const v=heat[y*Fw+x];if(v>0.05)put(fx0+x,fb-Fh+1+y,FC[Math.min(11,Math.floor(v/1.5*11)+1)],fireCol(v))}
+  for(const e of embers){e.y+=e.vy*dt;e.x+=wind*dt*1.5+Math.sin(t*5+e.y)*0.05;e.l-=dt*0.5;if(e.l>0)put(e.x,e.y,'.',e.l>0.5?'#ffb040':'#a04018')}
+  embers=embers.filter(e=>e.l>0&&e.y>0);
+  for(const f of flakes){f.y+=f.vy*dt;f.x+=(wind*(1+f.s)+Math.sin(t+f.y*0.3)*0.6)*dt*2;if(f.y>=rows||f.x<-2||f.x>cols+2){Object.assign(f,mkFlake(true));f.x=Math.random()*cols}put(f.x,f.y,f.s>0.6?'*':'.',f.s>0.6?'#ffffff':'#c8d0dc')}
+  ctx.fillStyle='#05070d';ctx.fillRect(0,0,W,H);
+  for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const i=y*cols+x;if(G[i]!==' '){ctx.fillStyle=C[i];ctx.fillText(G[i],x*cw,y*chh)}}
+}
+let last=performance.now(),visible=true;
+function loop(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(!paused&&visible&&cols){t+=dt;acc+=dt*22;while(acc>=1){acc-=1;stepFire()}draw(dt);fc++;ft+=dt;
+    if(ft>0.5){st.textContent='winter night | wind '+wind.toFixed(1)+' | snow '+flakes.length+' | fire '+inten.toFixed(1)+' | embers '+embers.length+' | '+Math.round(fc/ft)+' fps';fc=0;ft=0}}
+  requestAnimationFrame(loop);
+}
+const ro=new ResizeObserver(()=>size());ro.observe(cv);
+const io=new IntersectionObserver(es=>{visible=es[0].isIntersecting});io.observe(cv);
+document.fonts&&document.fonts.ready.then(size);
+requestAnimationFrame(loop);
+const bP=document.getElementById('bPause');bP.textContent=paused?'play':'pause';
+bP.onclick=()=>{paused=!paused;bP.textContent=paused?'play':'pause';bP.setAttribute('aria-label',paused?'Play animation':'Pause animation');if(paused)st.textContent='paused'};
+document.getElementById('bFire').onclick=()=>{inten=1.9};
+const winds=[1.2,2.6,-1.8,0];let wi=0;document.getElementById('bWind').onclick=()=>{wi=(wi+1)%winds.length;wind=winds[wi]};
+}
+</script>
+</body>
+</html>
