@@ -64,6 +64,13 @@ h3{font:600 18px/1.3 "IBM Plex Sans",sans-serif;margin:0}
 .tl .row:last-child{border-bottom:1px solid var(--line)}
 .tl .when{font:14px "IBM Plex Mono",monospace;color:var(--mute);white-space:nowrap}
 .tl p{margin:6px 0 0;color:#c3cad6;font-size:15px;max-width:70ch}
+.tl .org{margin:2px 0 0;color:var(--mute);font-size:15px}
+.tl ul{margin:10px 0 0;padding-left:18px;color:#c3cad6;font-size:15px;max-width:72ch}
+.tl li{margin:4px 0}.tl li::marker{color:var(--ember)}
+a.card{text-decoration:none;color:inherit}
+a.card:hover{border-color:var(--ember)}a.card:focus-visible{outline:2px solid var(--snow);outline-offset:2px}
+.card .go{font:500 13px "IBM Plex Mono",monospace;color:var(--snow)}
+a.card:hover .go{color:var(--ember)}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,5vw,64px)}
 .skill{padding:14px 0;border-top:1px solid var(--line)}
 .skill b{display:block;font:500 14px "IBM Plex Mono",monospace;color:var(--mute);margin-bottom:4px}
@@ -78,7 +85,7 @@ footer{padding:28px max(5vw,16px);color:#6b7487;font:13px "IBM Plex Mono",monosp
 <body>
 <nav>
   <a class="brand" href="#top">martin<span>.</span>ejionye</a>
-  <div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="gh" href="https://github.com/syk-v1">GitHub ↗</a></div>
+  <div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="https://www.linkedin.com/in/martinejionye/">LinkedIn</a><a class="gh" href="https://github.com/syk-v1">GitHub ↗</a></div>
 </nav>
 
 <header class="hero" id="top">
@@ -115,74 +122,101 @@ footer{padding:28px max(5vw,16px);color:#6b7487;font:13px "IBM Plex Mono",monosp
 <section class="band" id="projects"><div class="wrap">
   <h2><span class="p">~/</span>projects</h2>
   <div class="grid">
-    <article class="card">
+    <a class="card" href="https://www.linkedin.com/feed/update/urn:li:activity:7463189234959581184/" target="_blank" rel="noopener">
       <span class="kind">Competition</span>
       <h3>IMC Prosperity 4</h3>
-      <p>Algorithmic trading challenge with 18,803 teams. Competed as team VOID_GEMS, writing Python trading strategies and taking on manual trading rounds.</p>
-      <span class="stat">253rd <small style="font-size:14px;color:var(--mute);font-weight:400">of 18,803 · Round 1 manual (top 1.3%)</small></span>
-      <div class="tags"><span>Python</span><span>Market making</span><span>Trading</span></div>
-    </article>
-    <article class="card">
-      <span class="kind">Game · Hackathon</span>
-      <h3>Gridtown</h3>
-      <p>An interactive game that runs inside Reddit, built on Reddit's developer platform. Submitted to Reddit's Game of the Day hackathon on Devpost.</p>
-      <div class="tags"><span>Reddit Devvit</span><span>TypeScript</span><span>Game design</span></div>
-    </article>
-    <article class="card">
+      <p>Global algorithmic trading challenge with 18,800+ teams from 500+ universities. Competed as team VOID_GEMS, writing Python trading algorithms and solving manual trading rounds, and climbed over 2,300 places in the algo rankings between Rounds 1 and 2.</p>
+      <span class="stat">253rd <small style="font-size:14px;color:var(--mute);font-weight:400">of 18,800+ · Round 1 manual (top 1.3%)</small></span>
+      <div class="tags"><span>Python</span><span>Algorithmic trading</span><span>Market microstructure</span></div>
+      <span class="go">Read on LinkedIn ↗</span>
+    </a>
+    <a class="card" href="https://github.com/syk-v1/trump-iran-defense-stocks" target="_blank" rel="noopener">
       <span class="kind">Research</span>
-      <h3>Posts vs markets</h3>
-      <p>Tests whether presidential posts about Iran move defence stocks. I tag each post as escalating or de-escalating, then measure how the ITA defence ETF moves against SPY in the 30 minutes after it.</p>
-      <div class="tags"><span>Python</span><span>Event study</span><span>NLP</span></div>
-    </article>
-    <article class="card">
+      <h3>Do Trump's posts move defence stocks?</h3>
+      <p>An intraday event study of 3,474 Truth Social posts and 209,341 one-minute price bars. Posts about Iran were tagged as escalating or de-escalating, and ITA's 30-minute move against the S&amp;P 500 was compared with about 17,000 normal half-hours. The method was frozen on the 2025 war and tested once on 2026. The result was a clean null (p = 0.93).</p>
+      <div class="tags"><span>Python</span><span>pandas</span><span>Event study</span><span>Statistics</span></div>
+      <span class="go">View on GitHub ↗</span>
+    </a>
+    <a class="card" href="https://www.linkedin.com/feed/update/urn:li:activity:7529924481360887808/" target="_blank" rel="noopener">
+      <span class="kind">Game · Reddit hackathon</span>
+      <h3>Gridtown</h3>
+      <p>A daily geography game that runs inside a Reddit post. Each day shows one real city drawn from OpenStreetMap with no labels. You get three guesses, and the map zooms out after every miss. Built for Reddit's Game of the Day hackathon.</p>
+      <div class="tags"><span>Devvit</span><span>OpenStreetMap</span><span>Game design</span></div>
+      <span class="go">Read on LinkedIn ↗</span>
+    </a>
+    <a class="card" href="https://github.com/syk-v1/call-guardian" target="_blank" rel="noopener">
+      <span class="kind">Voice AI · Hackathon</span>
+      <h3>Call Guardian</h3>
+      <p>A voice agent that listens to a phone call with you. It whispers a warning when the caller starts using scam tactics, and answers when you quietly ask what to say. Built for the Hiya Voice AI Challenge, Security and Real-Time Assistance track.</p>
+      <div class="tags"><span>Node.js</span><span>Web Speech API</span><span>Claude</span></div>
+      <span class="go">View on GitHub ↗</span>
+    </a>
+    <a class="card" href="https://github.com/syk-v1/hybrid-routing-agent" target="_blank" rel="noopener">
+      <span class="kind">AI · Hackathon</span>
+      <h3>Hybrid Routing Agent</h3>
+      <p>Sends each query to the cheapest model that can answer it. A nine-signal complexity score from 0 to 1 decides whether a local phi3:mini model answers or the query escalates to Fireworks AI. It scored 12/12 on the evaluation suite using zero remote tokens.</p>
+      <div class="tags"><span>Python</span><span>Ollama</span><span>Fireworks AI</span></div>
+      <span class="go">View on GitHub ↗</span>
+    </a>
+    <a class="card" href="https://github.com/syk-v1/llm-agent-experiments" target="_blank" rel="noopener">
+      <span class="kind">AI</span>
+      <h3>The AI Council</h3>
+      <p>A multi-agent deliberation system. A chamber of free models each proposes an answer and critiques the others, then a separate panel of different models votes on the strongest proposal. Everything streams live to a web interface.</p>
+      <div class="tags"><span>Python</span><span>FastAPI</span><span>OpenRouter</span><span>SSE</span></div>
+      <span class="go">View on GitHub ↗</span>
+    </a>
+    <a class="card" href="https://github.com/syk-v1/leetcode-fsrs-tracker" target="_blank" rel="noopener">
       <span class="kind">Tool</span>
-      <h3>LeetCode spaced-repetition tracker</h3>
-      <p>Schedules reviews of a curated set of 49 high-yield problems using the FSRS memory model, so I revisit each pattern just before I'd forget it.</p>
-      <div class="tags"><span>FSRS</span><span>Algorithms</span><span>Web</span></div>
-    </article>
-    <article class="card">
-      <span class="kind">Tool</span>
-      <h3>Hackathon Radar</h3>
-      <p>A live tracker of open hackathons and coding and trading challenges from reputable companies, so I stop missing deadlines.</p>
-      <div class="tags"><span>Web</span><span>Automation</span></div>
-    </article>
-    <article class="card">
-      <span class="kind">Game</span>
-      <h3>Snowman sliding puzzle</h3>
-      <p>A tile-sliding puzzle game in Java, built for my first-year object-oriented programming module.</p>
-      <div class="tags"><span>Java</span><span>OOP</span></div>
-    </article>
+      <h3>Recall·LC</h3>
+      <p>A single-file LeetCode study tracker that uses the FSRS memory model to schedule reviews of a curated set of 49 high-yield problems. It tells you when to revisit each pattern so you remember it instead of re-grinding it.</p>
+      <div class="tags"><span>React</span><span>FSRS</span><span>localStorage</span></div>
+      <span class="go">View on GitHub ↗</span>
+    </a>
+    <a class="card" href="https://github.com/syk-v1/sentiment-trading-signal" target="_blank" rel="noopener">
+      <span class="kind">Quant · In progress</span>
+      <h3>Sentiment trading signal</h3>
+      <p>Scores news-headline sentiment for a single US stock with NLTK/VADER and combines it with recent price action to produce long or flat signals. These are backtested against buy-and-hold on return, drawdown and hit rate.</p>
+      <div class="tags"><span>Python</span><span>NLTK</span><span>Streamlit</span></div>
+      <span class="go">View on GitHub ↗</span>
+    </a>
   </div>
 </div></section>
 
 <section class="band" id="experience"><div class="wrap">
   <h2><span class="p">~/</span>experience</h2>
   <div class="tl">
-    <div class="row"><span class="when">Oct 2026 – now</span><div><h3>Student Representative</h3><p>School of Mathematical Sciences, Lancaster University. I gather feedback from students and raise it with staff.</p></div></div>
-    <div class="row"><span class="when">Ongoing</span><div><h3>Student Mentor, Generating Genius</h3><p>I help Year 11 students work out a career direction, turn it into a plan, and give feedback on their workshop tasks.</p></div></div>
-    <div class="row"><span class="when">Within last 2 years</span><div><h3>Volunteer organiser, local town council</h3><p>Helped run a foodbank and organise inclusivity events. I summarised residents' concerns for councillors, which led to a panel being set up to address them.</p></div></div>
-    <div class="row"><span class="when">Ongoing</span><div><h3>Lancaster maths society</h3><p>Help out at society events and fairs.</p></div></div>
+    <div class="row"><span class="when">Oct 2026 – now</span><div><h3>Student Representative</h3><p class="org">School of Mathematical Sciences, Lancaster University</p><ul><li>Act as the link between students in my cohort and academic staff in the School of Mathematical Sciences.</li><li>Collect feedback on modules, teaching and assessment, and raise recurring issues at staff-student meetings.</li><li>Report outcomes back to the cohort so students can see what changed as a result of their feedback.</li></ul></div></div>
+    <div class="row"><span class="when">2026 – now</span><div><h3>Student Mentor</h3><p class="org">Generating Genius</p><ul><li>Mentor Year 11 students through one-to-one conversations about their interests and possible career directions, including routes into STEM.</li><li>Help each student turn a broad goal into a concrete plan, such as which subjects, sixth-form options and university routes lead there.</li><li>Give iterative feedback on students' tasks during workshops, so they can improve between attempts.</li></ul></div></div>
+    <div class="row"><span class="when">Feb 2024 – Jun 2025</span><div><h3>GCSE Mathematics Tutor</h3><p class="org">The Radcliffe School, Milton Keynes</p><ul><li>Tutored GCSE Mathematics students one-to-one and in small groups, alongside my own A levels.</li><li>Prepared lesson plans and practice material tailored to each student's weak topics.</li><li>Taught structured approaches to exam-style questions, showing students how to break a long problem into steps and check their working.</li></ul></div></div>
+    <div class="row"><span class="when">Volunteering</span><div><h3>Volunteer Organiser</h3><p class="org">Wolverton &amp; Greenleys Town Council, Milton Keynes</p><ul><li>Helped organise and run a community foodbank with the town council.</li><li>Gathered residents' concerns, summarised them and presented them to councillors, which led to a panel being set up to address them.</li><li>Helped plan and run inclusivity events for the local community.</li></ul></div></div>
+    <div class="row"><span class="when">Jul 2024</span><div><h3>Administrative Assistant (work experience)</h3><p class="org">Wolverton &amp; Greenleys Town Council, Milton Keynes</p><ul><li>Handled day-to-day administration including filing, phone enquiries and keeping records up to date.</li><li>Supported the planning of community outreach events.</li></ul></div></div>
+    <div class="row"><span class="when">2025</span><div><h3>Insight Day</h3><p class="org">LMG Specialty Insurance, London</p><ul><li>Learned about specialty insurance and the London Market, and spoke with underwriting, analytics and actuarial professionals about their work.</li></ul></div></div>
+    <div class="row"><span class="when">Sep 2023</span><div><h3>Software Engineering Virtual Experience</h3><p class="org">JPMorgan Chase &amp; Co. (Forage)</p><ul><li>Built a simulated payment-processing module for a banking system using secure coding practices, delivered within an Agile two-week sprint.</li></ul></div></div>
+    <div class="row"><span class="when">Ongoing</span><div><h3>Member and helper</h3><p class="org">Lancaster University Mathematics Society</p><ul><li>Help out at society events, including staffing the society's stall and introducing new students to the society.</li></ul></div></div>
   </div>
 </div></section>
 
 <section class="band"><div class="wrap two">
   <div>
     <h2><span class="p">~/</span>skills</h2>
-    <div class="skill"><b>Languages</b>Python, Java, C, C++</div>
+    <div class="skill"><b>Languages</b>Python, Java, C, C++, JavaScript</div>
+    <div class="skill"><b>AI literacy</b>Building with LLM APIs (Claude, Fireworks AI, OpenRouter) and local models (Ollama); multi-agent systems and model routing; prompt design and evaluating model output critically; AI-assisted development with Claude Code</div>
     <div class="skill"><b>Computer science</b>Data structures, algorithm complexity, object-oriented design</div>
     <div class="skill"><b>Mathematics</b>Linear algebra, probability and statistics, real analysis, discrete maths, vector calculus</div>
-    <div class="skill"><b>Tools</b>Git, VS Code, Obsidian</div>
+    <div class="skill"><b>Libraries and tools</b>pandas, FastAPI, React, Streamlit, NLTK, Git, VS Code, Obsidian</div>
   </div>
   <div>
     <h2><span class="p">~/</span>education</h2>
     <div class="skill"><b>2025 – 2028 (expected)</b>BSc Computer Science and Mathematics, Lancaster University</div>
     <div class="skill"><b>Current modules</b>Linear Algebra II, Probability II</div>
+    <div class="skill"><b>2023 – 2025</b>A levels, The Radcliffe School: Computer Science (A), Mathematics (B), Further Mathematics (B)</div>
+    <div class="skill"><b>Award</b>UKMT Senior Mathematical Challenge, Silver</div>
   </div>
 </div></section>
 
 <section class="band" id="contact"><div class="wrap contact">
-  <div><h2 style="margin-bottom:12px"><span class="p">~/</span>contact</h2><p>Open to internships, hackathon teams and interesting projects. The quickest way to reach me is through GitHub.</p></div>
-  <a class="btn primary" href="https://github.com/syk-v1">github.com/syk-v1 ↗</a>
+  <div><h2 style="margin-bottom:12px"><span class="p">~/</span>contact</h2><p>Open to internships, hackathon teams and interesting projects. The quickest way to reach me is a message on LinkedIn.</p></div>
+  <span class="cta" style="margin:0"><a class="btn primary" href="https://www.linkedin.com/in/martinejionye/">LinkedIn ↗</a><a class="btn" href="https://github.com/syk-v1">GitHub ↗</a></span>
 </div></section>
 
 <footer><span>© 2026 Martin Ejionye</span><span>scene rendered live in ASCII</span></footer>
